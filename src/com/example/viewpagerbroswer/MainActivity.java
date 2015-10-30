@@ -26,6 +26,8 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -81,6 +83,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 
 
+
+
 import android.util.Xml;
 
 public class MainActivity extends ActionBarActivity {
@@ -100,6 +104,8 @@ public class MainActivity extends ActionBarActivity {
     ListView mListView = null;  
     WebView webview=null;
     WebView  sharewebview=null;
+    Button baidubtn=null;
+    EditText _texttb=null;
     List<channel> fullresultlist;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,6 +140,21 @@ public class MainActivity extends ActionBarActivity {
         mListView=(ListView)view1.findViewById(R.id.listView1);
         webview=(WebView)view2.findViewById(R.id.webview);
         allsiteList=(ListView)view4.findViewById(R.id.allsitelv);
+        baidubtn=(Button)view1.findViewById(R.id.button1);
+        _texttb=(EditText)view1.findViewById(R.id.editText1);
+       baidubtn.setOnClickListener(new View.OnClickListener() {
+    	    public void onClick(View veee){
+    	    	Intent iintent = new Intent();
+    	    	iintent.setAction("android.intent.action.VIEW");
+    	    	Uri content_url = Uri.parse("https://www.baidu.com/s?wd="+_texttb.getText());
+    	    	iintent.setData(content_url);
+    	    	startActivity(iintent);
+
+    	    }
+       });
+    	
+
+    	
         BmobQuery<test> query = new BmobQuery<test>();
 		//查询playerName叫“比目”的数据
 		//query.addWhereEqualTo("playerName", "比目");
